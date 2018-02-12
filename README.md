@@ -1,5 +1,5 @@
 # pdf_converter
-A web service or executable jar for converting txt,word,excel,ppt,image and compress package to PDF file
+A web service or executable jar for converting to PDF file, supporting text,word,excel,ppt,image and compress package
 
 # usage
  - Converting *Text(.txt) and Image(supporting .gif .jpg .png)* using [itextpdf](http://itextpdf.com)
