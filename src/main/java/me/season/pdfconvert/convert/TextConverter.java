@@ -15,6 +15,8 @@ import java.io.InputStreamReader;
 
 /**
  * Created by zhangshichen on 2017/8/3.
+ * convert txt file using itextpdf
+ * https://itextpdf.com
  */
 @Component
 public class TextConverter implements Converter {
@@ -29,13 +31,10 @@ public class TextConverter implements Converter {
         Document output = null;
         try {
             input = new BufferedReader(new InputStreamReader(new FileInputStream(source), "utf-8"));
-            // letter 8.5x11
-            //    see com.lowagie.text.PageSize for a complete list of page-size constants.
             output = new Document(PageSize.A4);
-            /**
+            /*
              * 新建一个字体,iText的方法 STSongStd-Light 是字体，在iTextAsian.jar 中以property为后缀
-             * UniGB-UCS2-H 是编码，在iTextAsian.jar 中以cmap为后缀 H 代表文字版式是 横版， 相应的 V
-             * 代表竖版
+             * UniGB-UCS2-H 是编码，在iTextAsian.jar 中以cmap为后缀 H 代表文字版式是 横版， 相应的 V 代表竖版
              */
             BaseFont bfChinese = BaseFont.createFont("STSongStd-Light", "UniGB-UCS2-H", false);
             Font normal_fontChinese = new Font(bfChinese, 12, Font.NORMAL, BaseColor.BLACK);
@@ -54,7 +53,9 @@ public class TextConverter implements Converter {
             e.printStackTrace();
             return false;
         } finally {
-            output.close();
+            if (output != null) {
+                output.close();
+            }
             IOUtils.closeQuietly(input);
         }
         return true;

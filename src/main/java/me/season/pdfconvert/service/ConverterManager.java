@@ -31,7 +31,7 @@ public class ConverterManager {
         Converter converter = pool.get(suffix);
 
         long start = System.currentTimeMillis();
-        boolean flag = converter == null ? false : converter.convert(source, target);
+        boolean flag = converter != null && converter.convert(source, target);
         long end = System.currentTimeMillis();
         LOG.info("finish converting {} ...cost {} ms.", filename, end - start);
         return flag;
