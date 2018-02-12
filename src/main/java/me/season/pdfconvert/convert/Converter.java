@@ -5,7 +5,7 @@ package me.season.pdfconvert.convert;
  */
 public interface Converter {
     /*
-    https://msdn.microsoft.com/en-us/library/office/ff841702(v=office.14).aspxs
+    https://msdn.microsoft.com/en-us/library/office/ff841702(v=office.14).aspx
     https://msdn.microsoft.com/en-us/library/office/ff846370(v=office.14).aspx
     https://msdn.microsoft.com/en-us/library/office/ff746846(v=office.14).aspx
      */

@@ -13,6 +13,7 @@ import java.io.File;
 
 /**
  * Created by zhangshichen on 2017/8/3.
+ * https://msdn.microsoft.com/en-us/library/office/ff747146(v=office.14).aspx
  */
 @Component
 public class PowerpointConverter implements Converter {
@@ -30,14 +31,14 @@ public class PowerpointConverter implements Converter {
         try {
             app = new ActiveXComponent("Powerpoint.Application");
             Dispatch presentations = app.getProperty("Presentations").toDispatch();
-            Dispatch presentation = Dispatch.call(presentations, "Open", source, true, true, false).toDispatch();
+            Dispatch presentation = Dispatch.call(presentations, "Open", source, true).toDispatch();
 
             File tofile = new File(target);
             if (tofile.exists()) {
                 tofile.delete();
             }
             Dispatch.call(presentation, "SaveAs", target, pptSaveAsPDF);
-            Dispatch.call(presentation, "Close", false);
+            Dispatch.call(presentation, "Close");
         } catch (Exception e) {
             LOG.error("convert exception:", e);
             return false;
